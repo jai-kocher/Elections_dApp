@@ -31,14 +31,19 @@ class _VotingPageState extends State<VotingPage> {
       var candidateDetails=await blockchain.callFunction('getCandidateDetails',[candidate]);
       // print(candidateDetails);
 
-     tempCan.add(Candidate(candidateDetails[0], '123456789101112', candidateDetails[1])); 
+     tempCan.add(Candidate(candidateDetails[0], '123456789101112', candidateDetails[1],candidate)); 
     }
     setState(() {
       candidates.candidateList=tempCan;
     });
-    
-
   }
+
+  void voteCandidate(EthereumAddress address) async {
+    MetaMaskProvider blockchain= Provider.of<MetaMaskProvider>(context,listen:false);
+    String response=await blockchain.payFunction('voteCandidate',[address]);
+    print(response);
+  }
+
   @override
   Widget build(BuildContext context) {
     
@@ -54,6 +59,10 @@ class _VotingPageState extends State<VotingPage> {
               const SizedBox(width: double.infinity),
               for (Candidate i in candidates.getCandidates())
               VotingButton(name: i.name, party: i.party, onP: () {
+                voteCandidate(i.address);
+
+                
+
                 Navigator.push(context, MaterialPageRoute(builder: ((context) => VotingConfirmationPage(name: i.name, party: i.party))));
               })
             ],

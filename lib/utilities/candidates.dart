@@ -1,6 +1,9 @@
+import 'package:web3dart/web3dart.dart';
+
 class Candidate {
-  Candidate(this.name, this.aadhaar, this.party);
+  Candidate(this.name, this.aadhaar, this.party,this.address);
   final String name, aadhaar, party;
+  final EthereumAddress address;
 }
 
 class CandidateList {
