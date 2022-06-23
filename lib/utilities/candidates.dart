@@ -5,10 +5,10 @@ class Candidate {
 
 class CandidateList {
   List<Candidate> candidateList = [
-    Candidate('Jai', '123456789012', 'BJP'),
-    Candidate('Sreyas', '123456789021', 'DMK'),
-    Candidate('Arjun', '123456789031', 'AAP'),
-    Candidate('Agilan', '123456789042', 'SP'),
+    // Candidate('Jai', '123456789012', 'BJP'),
+    // Candidate('Sreyas', '123456789021', 'DMK'),
+    // Candidate('Arjun', '123456789031', 'AAP'),
+    // Candidate('Agilan', '123456789042', 'SP'),
   ];
 
   List<String> getCandidateNames() {

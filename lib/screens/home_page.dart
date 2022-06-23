@@ -1,5 +1,8 @@
 import 'package:elections_dapp/utilities/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/metamask.dart';
 //import 'package:elections_dapp/provider/metamask.dart';
 //import 'package:provider/provider.dart';
 
@@ -8,18 +11,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // print('gi');
-    // final metaMaskProvider = Provider.of<MetaMaskProvider>(context);
-    // if (metaMaskProvider.isEnabled && metaMaskProvider.isInOperatingChain) {
-    //   print('connected');
-    //   print(metaMaskProvider.currentAddress);
-    //   print('thats the address');
-    // } else if (metaMaskProvider.isConnected &&
-    //     !metaMaskProvider.isInOperatingChain) {
-    //   print('Wrong chain please connect to ${metaMaskProvider.operatorChain}');
-    // } else if (metaMaskProvider.isEnabled) {
-    //   print('check your metamask');
-    // }
+    
+    final metaMaskProvider = Provider.of<MetaMaskProvider>(context);
+    if (metaMaskProvider.isEnabled && metaMaskProvider.isInOperatingChain) {
+      print('connected');
+      print(metaMaskProvider.currentAddress);
+      print('thats the address');
+    } else if (metaMaskProvider.isConnected &&
+        !metaMaskProvider.isInOperatingChain) {
+      print('Wrong chain please connect to ${metaMaskProvider.operatorChain}');
+    } else if (metaMaskProvider.isEnabled) {
+      print('check your metamask');
+    }
 
     return Scaffold(
       appBar: AppBar(title: appBarTitle),
@@ -61,7 +64,7 @@ class OptionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final metaMaskProvider = Provider.of<MetaMaskProvider>(context);
+    final metaMaskProvider = Provider.of<MetaMaskProvider>(context);
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         fixedSize: const Size(250, 50),
@@ -71,7 +74,7 @@ class OptionButton extends StatelessWidget {
         ),
       ),
       onPressed: (() async {
-        // await metaMaskProvider.connect();
+        await metaMaskProvider.connect();
         Navigator.pushNamed(context, nextPage);
         //print('hi');
       }),

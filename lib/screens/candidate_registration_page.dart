@@ -2,6 +2,9 @@
 
 import 'package:elections_dapp/screens/candidate_confirmation_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:web3dart/web3dart.dart';
+import '../provider/metamask.dart';
 import '../utilities/constants.dart';
 
 class CandidateLoginPage extends StatefulWidget {
@@ -11,6 +14,16 @@ class CandidateLoginPage extends StatefulWidget {
 
 class _CandidateLoginPageState extends State<CandidateLoginPage> {
   String? _aadhaar, _name, _party;
+
+  @override
+ 
+
+  void addCandidate(String name,String party) async {
+    // MetaMaskProvider blockchain= Provider.of<MetaMaskProvider>(context,listen:false);
+    // List success=await blockchain.callFunction('addCandidate');
+    // final function = blockchain.contract.function('addCandidate');
+    // blockchain.ethClient.sendTransaction("",Transaction.callContract(contract: blockchain.contract, function: function, parameters: [name,party]));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +92,9 @@ class _CandidateLoginPageState extends State<CandidateLoginPage> {
                 ),
               ),
               onPressed: (() async {
+                // print(_name);
+                // print(_party);
+                addCandidate(_name!, _party!);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

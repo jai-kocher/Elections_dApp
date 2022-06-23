@@ -5,7 +5,7 @@ const { mnemonic, url } = require("./credential");
 const provider = new HDWalletProvider(mnemonic, url);
 
 const web3 = new Web3(provider);
-
+//0x939c28340B60AA6Ff61B46027FEB175Dd094E870
 const deploy = async () => {
 
   const accounts = await web3.eth.getAccounts();
